@@ -88,11 +88,11 @@ bool process(const char * blobName,const char * friBlobName,long pos[],long leng
     //找到文件结尾，copy剩余的字符
     fseek(blob,0,SEEK_END);
     long  fileSize = ftell(blob);
+    fseek(blob , curPos , SEEK_SET);
     if(fileSize > curPos&& flag){
         int len = fileSize - curPos;
         copyBytes(blob,friBlob,len);
     }
-    int firSize = ftell(friBlob);
     fclose(blob);
     fclose(friBlob);
     //printf("run %s c++  zlib finish with %d bytes\n",flag?"success":"wrong",firSize);
