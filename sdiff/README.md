@@ -50,3 +50,12 @@ python3 ap-x-diff_stack_bar.py excel_path data_path csv_file_name start_no end_n
 	----3.APK
 ```
 
+## note
+
+czlib.so may need to be recompiled. If ctool fails to load the function, please recompile czlib.cpp and use the *nm* command to get the internal function name of czlib.so. Then modify the corresponding function name in *sdiff\com\google\archivepatcher\shared\cZlibBuildFri.java*
+
+```
+g++ -fPIC -shared -o czlib.so czlib.cpp
+nm czlib.so
+```
+
